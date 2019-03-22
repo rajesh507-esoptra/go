@@ -205,7 +205,7 @@ type exactSig struct {
 }
 
 func (e *exactSig) match(data []byte, firstNonWS int) string {
-	if bytes.HasPrefix(data, e.sig) {
+	if bytes.HasPrefix(data[firstNonWS:], e.sig) {
 		return e.ct
 	}
 	return ""
